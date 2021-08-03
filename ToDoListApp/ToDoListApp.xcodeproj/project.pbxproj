@@ -17,6 +17,8 @@
 		BDCCAD4426B8322900AE4FBF /* ToDoListAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCCAD4326B8322900AE4FBF /* ToDoListAppUITests.swift */; };
 		BDCCAD5226B835ED00AE4FBF /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCCAD5126B835ED00AE4FBF /* ToDoTableViewController.swift */; };
 		BDCCAD5626B846FB00AE4FBF /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCCAD5526B846FB00AE4FBF /* ToDo.swift */; };
+		BDCCAD5826B84C7100AE4FBF /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCCAD5726B84C7100AE4FBF /* ToDoListViewController.swift */; };
+		BDCCAD5A26B8FDD900AE4FBF /* CompletedToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCCAD5926B8FDD900AE4FBF /* CompletedToDoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		BDCCAD4526B8322900AE4FBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDCCAD5126B835ED00AE4FBF /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 		BDCCAD5526B846FB00AE4FBF /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		BDCCAD5726B84C7100AE4FBF /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
+		BDCCAD5926B8FDD900AE4FBF /* CompletedToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedToDoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 				BDCCAD2726B8322700AE4FBF /* ToDoListApp.xcdatamodeld */,
 				BDCCAD5126B835ED00AE4FBF /* ToDoTableViewController.swift */,
 				BDCCAD5526B846FB00AE4FBF /* ToDo.swift */,
+				BDCCAD5726B84C7100AE4FBF /* ToDoListViewController.swift */,
+				BDCCAD5926B8FDD900AE4FBF /* CompletedToDoViewController.swift */,
 			);
 			path = ToDoListApp;
 			sourceTree = "<group>";
@@ -267,7 +273,9 @@
 				BDCCAD1F26B8322700AE4FBF /* AppDelegate.swift in Sources */,
 				BDCCAD5626B846FB00AE4FBF /* ToDo.swift in Sources */,
 				BDCCAD5226B835ED00AE4FBF /* ToDoTableViewController.swift in Sources */,
+				BDCCAD5A26B8FDD900AE4FBF /* CompletedToDoViewController.swift in Sources */,
 				BDCCAD2126B8322700AE4FBF /* SceneDelegate.swift in Sources */,
+				BDCCAD5826B84C7100AE4FBF /* ToDoListViewController.swift in Sources */,
 				BDCCAD2926B8322700AE4FBF /* ToDoListApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

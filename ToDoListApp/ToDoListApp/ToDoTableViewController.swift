@@ -20,7 +20,7 @@ class ToDoTableViewController: UITableViewController {
 
     func createToDo() -> [ToDoClass] {
         let swiftToDo = ToDoClass()
-        swiftToDo.description = "LearnSwift"
+        swiftToDo.description = "Learn Swift"
         swiftToDo.important = true
         
         let dogToDo = ToDoClass()
@@ -32,7 +32,7 @@ class ToDoTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return listOfToDo.count
     }
 
 
@@ -52,16 +52,37 @@ class ToDoTableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+        let eachToDo = listOfToDo[indexPath.row]
+        performSegue(withIdentifier: "moveToCompletedToDoVC", sender: eachToDo)
+    }
 
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if let nextToDoListVC = segue.destination as?
+            ToDoListViewController {
+            nextToDoListVC.previousToDoTVC = self
+        }
+        
+        
+        if let nextCompletedToDoVC = segue.destination as? CompletedToDoViewController {
+            
+            if let chosenToDo = sender as? ToDoClass {
+                nextCompletedToDoVC.selectedToDo = chosenToDo
+            }
+            
+            nextCompletedToDoVC.previousToDoTVC = self
+        }
+
+        
     }
-    */
+    
 
 }
