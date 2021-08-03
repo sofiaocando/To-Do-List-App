@@ -10,15 +10,15 @@ import UIKit
 class CompletedToDoViewController: UIViewController {
     
     var previousToDoTVC = ToDoTableViewController()
-    var selectedToDo = ToDoClass()
+    var selectedToDo = ToDoListAppCD?(<#ToDoListAppCD#>)
     
     @IBOutlet weak var completedToDoOutlet: UILabel!
     
     override func viewDidLoad() {
+
         super.viewDidLoad()
         
-        completedToDoOutlet.text = selectedToDo.description
-        
+        completedToDoOutlet.text = selectedToDo?.descriptionInCD
     }
     
     @IBAction func completedToDoButton(_ sender: UIButton) {

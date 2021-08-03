@@ -9,25 +9,36 @@ import UIKit
 
 class ToDoTableViewController: UITableViewController {
   
-    var listOfToDo : [ToDoClass] = []
+    var listOfToDo : [ToDoListAppCD] = []
     
-    override func viewDidLoad() {
+//    override func viewDidLoad() {
+    func getToDos() {
+        if let accessToCoreData = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext{
+            
+            if let dataFromCoreData = try? accessToCoreData.fetch(ToDoListAppCD.fetchRequest()) as? [ToDoListAppCD] {
         
-        super.viewDidLoad()
-        
-        listOfToDo = createToDo()
+            listOfToDo = dataFromCoreData
+            tableView.reloadData()
+                
+            }
+        }
     }
-
-    func createToDo() -> [ToDoClass] {
-        let swiftToDo = ToDoClass()
-        swiftToDo.description = "Learn Swift"
-        swiftToDo.important = true
+    
+//        super.viewDidLoad()
         
-        let dogToDo = ToDoClass()
-        dogToDo.description = "Walk the dog"
-        
-        return [swiftToDo, dogToDo]
-    }
+//        listOfToDo = createToDo()
+//    }
+//
+//    func createToDo() -> [ToDoClass] {
+//        let swiftToDo = ToDoClass()
+//        swiftToDo.description = "Learn Swift"
+//        swiftToDo.important = true
+//
+//        let dogToDo = ToDoClass()
+//        dogToDo.description = "Walk the dog"
+//
+//        return [swiftToDo, dogToDo]
+//    }
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,17 +52,34 @@ class ToDoTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         let eachToDo = listOfToDo[indexPath.row]
+        
         cell.textLabel?.text = eachToDo.description
         
-        if eachToDo.important {
-            cell.textLabel?.text = "‼️" + eachToDo.description
-        } else {
-            cell.textLabel?.text = eachToDo.description
-            
+        if let thereIsDescription = eachToDo.descriptionInCD {
+            if eachToDo.importantInCD {
+                cell.textLabel?.text = "‼️" + thereIsDescription
+            } else {
+                cell.textLabel?.text = eachToDo.descriptionInCD
+                
+            }
         }
+        
+//        if eachToDo.importantInCD {
+//            cell.textLabel?.text = "‼️" + eachToDo.thereIsDescription
+//        } else {
+//            cell.textLabel?.text = eachToDo.descriptionInCD
+//
+//        }
         
         return cell
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getToDos()
+    }
+    
+    
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
@@ -79,10 +107,11 @@ class ToDoTableViewController: UITableViewController {
             }
             
             nextCompletedToDoVC.previousToDoTVC = self
-        }
+            if let chosenToDo = sender as? ToDoListAppCD
 
         
     }
     
 
+}
 }

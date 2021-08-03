@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ToDoListViewController: UIViewController {
     
@@ -19,17 +20,33 @@ class ToDoListViewController: UIViewController {
     }
     
     @IBAction func addToDoButton(_ sender: UIButton) {
-        let newToDo = ToDoClass()
         
-        if let checkForInput = descriptionOutlet.text {
-            newToDo.description = checkForInput
-            newToDo.important = importantSwitch.isOn
+        guard let accessToCoreData = UIApplication.shared.delegate as? AppDelegate else {
+            return
         }
         
-        previousToDoTVC.listOfToDo.append(newToDo)
-        previousToDoTVC.tableView.reloadData()
+        let dataFromCoreData = accessToCoreData.persistentContainer.viewContext
+        let newToDo = ToDoListAppCD(context: dataFromCoreData)
+        
+        newToDo.descriptionInCD = descriptionOutlet.text
+        newToDo.importantInCD = importantSwitch.isOn
+        
+        accessToCoreData.saveContext()
         navigationController?.popViewController(animated: true)
-    }
+        
+//        let newToDo = ToDoClass()
+//
+//        if let checkForInput = descriptionOutlet.text {
+//                 newToDo.description = checkForInput
+//                 newToDo.important = importantSwitch.isOn
+            }
+
+        }
+        
+//        previousToDoTVC.listOfToDo.append(newToDo)
+//        previousToDoTVC.tableView.reloadData()
+//        navigationController?.popViewController(animated: true)
+
     
 
 
@@ -43,4 +60,4 @@ class ToDoListViewController: UIViewController {
     }
     */
 
-}
+
