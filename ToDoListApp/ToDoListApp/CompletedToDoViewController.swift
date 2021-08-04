@@ -10,7 +10,7 @@ import UIKit
 class CompletedToDoViewController: UIViewController {
     
     var previousToDoTVC = ToDoTableViewController()
-    var selectedToDo = ToDoListAppCD?(<#ToDoListAppCD#>)
+    var selectedToDo : ToDoListAppCD?
     
     @IBOutlet weak var completedToDoOutlet: UILabel!
     
@@ -22,6 +22,15 @@ class CompletedToDoViewController: UIViewController {
     }
     
     @IBAction func completedToDoButton(_ sender: UIButton) {
+        guard let accessCoreData = UIApplication.shared.delegate as? AppDelegate else {        return
+        }
+        
+        let dataFromCoreData = accessCoreData.persistentContainer.viewContext
+        
+        if let toDoDelete = selectedToDo {
+            dataFromCoreData.delete(toDoDelete)
+            navigationController?.popViewController(animated: true)
+        }
     }
     
 

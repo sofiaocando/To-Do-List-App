@@ -102,16 +102,17 @@ class ToDoTableViewController: UITableViewController {
         
         if let nextCompletedToDoVC = segue.destination as? CompletedToDoViewController {
             
-            if let chosenToDo = sender as? ToDoClass {
+            if let chosenToDo = sender as? ToDoListAppCD {
                 nextCompletedToDoVC.selectedToDo = chosenToDo
             }
             
             nextCompletedToDoVC.previousToDoTVC = self
-            if let chosenToDo = sender as? ToDoListAppCD
+            if let chosenToDo = sender as? ToDoListAppCD {
 
         
     }
     
 
+}
 }
 }
